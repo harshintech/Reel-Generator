@@ -1,5 +1,8 @@
 const fs = require("fs");
-const { createCanvas, loadImage } = require("canvas");
+const { createCanvas, loadImage, registerFont } = require("canvas");
+
+registerFont("fonts/Poppins-Regular.ttf", { family: "Poppins" });
+registerFont("fonts/Poppins-Light.ttf", { family: "PoppinsLight" });
 
 if (!fs.existsSync("reels")) fs.mkdirSync("reels");
 
@@ -14,11 +17,10 @@ async function generate() {
     const ctx = canvas.getContext("2d");
 
     ctx.drawImage(background, 0, 0, 1080, 1920);
-
     ctx.drawImage(quoteIcon, 110, 700, 120, 120);
 
     ctx.fillStyle = "white";
-    ctx.font = "40px Arial";
+    ctx.font = "40px Poppins";
 
     let text = quotes[i];
     let y = 850;
@@ -41,7 +43,7 @@ async function generate() {
 
     ctx.fillText(line, 130, y);
 
-    ctx.font = "35px Arial";
+    ctx.font = "35px PoppinsLight";
     ctx.fillText("- Infinite Mentalities", 130, y + 70);
 
     const buffer = canvas.toBuffer("image/png");
