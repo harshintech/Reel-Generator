@@ -36,7 +36,7 @@ app.post("/add-quote", (req, res) => {
 });
 // generate reels
 app.post("/generate", (req, res) => {
-  exec("node generateReels.js", (err) => {
+  exec("node generateImages.js", (err) => {
     if (err) return res.status(500).send("Generation failed");
 
     const output = fs.createWriteStream("reels.zip");
