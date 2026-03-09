@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: reel-generator
+    env: node
+    buildCommand: |
+      apt-get update
+      apt-get install -y ffmpeg
+      npm install
+    startCommand: node server.js
